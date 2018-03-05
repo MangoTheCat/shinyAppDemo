@@ -1,17 +1,17 @@
 # shinyAppDemo
 
-The shinyAppDemo packae has been created to demonstrate one method of packaging a shiny application.
+The shinyAppDemo package has been created to demonstrate one method of packaging a shiny application.
 
 ## Installation
 
 ``` r
-devtools::install_github("mangothecat/shinyAppDemo")
+devtools::install_github("sellorm/shinyAppDemo")
 ```
 
 ...or...
 
 ``` r
-source("https://install-github.me/mangothecat/shinyAppDemo")
+source("https://install-github.me/sellorm/shinyAppDemo")
 ```
 
 ## Example
