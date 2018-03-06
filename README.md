@@ -14,9 +14,9 @@ devtools::install_github("sellorm/shinyAppDemo")
 source("https://install-github.me/sellorm/shinyAppDemo")
 ```
 
-## Example
+## Run the shiny app
 
-This is a basic example which shows you how to solve a common problem:
+There's only one exported function in the package and it runs the shiny app:
 
 ``` r
 shinyAppDemo::launch()
