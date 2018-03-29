@@ -19,5 +19,5 @@ source("https://install-github.me/mangothecat/shinyAppDemo")
 There's only one exported function in the package and it runs the shiny app:
 
 ``` r
-shinyAppDemo::launch()
+shinyAppDemo::launchApp()
 ```
