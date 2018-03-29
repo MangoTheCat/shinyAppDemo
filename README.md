@@ -25,7 +25,7 @@ shinyAppDemo::launchApp()
 ---
 
 # Packaging shiny applications - a deep dive
-(Or, how to write a shiny app.R file that only contains a single line of code)
+_(Or, how to write a shiny app.R file that only contains a single line of code)_
 
 This post is long overdue. The information contained herein has been built up over years of deploying and hosting shiny apps, particularly in production environments, and mainly where those shiny apps are very large and contain a lot of code.
 
@@ -57,7 +57,7 @@ They’re also really easy to share. Even if you don’t publish your package to
 
 
 # Cons of packaging
-Before you get all excited and start to package your shiny applications, you should be aware that — depending on your publishing environment — packaging a shiny application may make it difficult or even impossible to publish to a system like Shiny Server or RStudio Connect, without first unpacking it again.
+Before you get all excited and start to package your shiny applications, you should be aware that -- depending on your publishing environment -- packaging a shiny application may make it difficult or even impossible to publish to a system like Shiny Server or RStudio Connect, without first unpacking it again.
 
 
 # A little bit of mango history
@@ -68,25 +68,25 @@ When our data scientists would write apps that got a little large or that they w
 
 More than once I got back a response along the lines of, “but you just need to load it up and then do runApp()”. But, that’s just not how Shiny Server works. Over time, we’ve evolved a set of best practices around when and how to package a shiny application.
 
-The first step was taking the leap into understanding shiny and R packages better - this is where I started to work in the space between data science and IT.
+The first step was taking the leap into understanding shiny and R packages better. It was here that I started to work in the space between data science and IT.
 
 # How to package a shiny application
 
 If you’ve seen the simple app you get when you choose to create a new shiny application in RStudio, you’ll be familiar with the basic structure of a shiny application. You need to have a UI object and a server function.
 
-If you have a look inside the UI object you’ll see that it contains the html that will be used for building your user interface. It’s not everything that will get served to the user when they access the web application — some of that is added by the shiny framework when it runs the application — but it covers off the elements you’ve defined yourself.
+If you have a look inside the UI object you’ll see that it contains the html that will be used for building your user interface. It’s not everything that will get served to the user when they access the web application -- some of that is added by the shiny framework when it runs the application -- but it covers off the elements you’ve defined yourself.
 
 The server function defines the server-side logic that will be executed for your application. This includes code to handle your inputs and produce outputs in response.
 
 The great thing about shiny is that you can create something awesome quite quickly, but once you’ve mastered the basics, the only limit is your imagination.
 
-For our purposes here, we’re going to stick with the ‘geyser’ application that RStudio gives you when you click to create a new Shiny Web Application. If you open up RStudio, and create a new shiny app — choosing the single file app.R version — you’ll be able to see what we’re talking about. The small size of the geyser app makes it ideal for further study.
+For our purposes here, we’re going to stick with the ‘geyser’ application that RStudio gives you when you click to create a new Shiny Web Application. If you open up RStudio, and create a new shiny app -- choosing the single file app.R version -- you’ll be able to see what we’re talking about. The small size of the geyser app makes it ideal for further study.
 
 If you look through the code you’ll see that there are essentially three components: the UI object, the server function, and the `shinyApp()` function that actually runs the app.
 
-Building an R package of just those three components is a case of breaking them out into the constituent parts and inserting them into a blank package structure. We have a version of this up on GitHub that you can check out if you want. GITHUB LINK!!!!
+Building an R package of just those three components is a case of breaking them out into the constituent parts and inserting them into a blank package structure. We have a [version of this up on GitHub](https://github.com/mangothecat/shinyAppDemo) that you can check out if you want.
 
-Once the app has been adapted to sit within the standard R package structure we’re almost done. The UI object and server function don’t really need to be exported, and we’ve just put a really thin wrapper function around `shinyApp()` — I’ve called it `launchApp()` — which we’ll actually use to launch the app. If you install the package from GitHub with devtools, you can see it in action.
+Once the app has been adapted to sit within the standard R package structure we’re almost done. The UI object and server function don’t really need to be exported, and we’ve just put a really thin wrapper function around `shinyApp()` -- I’ve called it `launchApp()` -- which we’ll actually use to launch the app. If you install the package from GitHub with devtools, you can see it in action.
 
 ```
 library(shinyAppDemo)
@@ -117,7 +117,7 @@ Here’s where having a packaged shiny app can get tricky, so we’re going to t
 
 # Shiny Server and Shiny Server Pro
 
-Perhaps surprisingly — given that Shiny Server is the oldest method of shiny app publication — it’s also the easiest one to use with these sorts of packaged shiny apps. There are basically two ways to publish on shiny server. From your home directory on the server — also known as self-publishing — or publishing from a central location, usually the directory ‘/srv/shiny-server’.
+Perhaps surprisingly -- given that Shiny Server is the oldest method of shiny app publication -- it’s also the easiest one to use with these sorts of packaged shiny apps. There are basically two ways to publish on shiny server. From your home directory on the server -- also known as self-publishing -- or publishing from a central location, usually the directory ‘/srv/shiny-server’.
 
 The central benefit of this approach is the ability to update the application just by installing a newer version of the package. Sadly though, it’s not always an easy approach to take.
 
@@ -146,7 +146,7 @@ This is essentially the same as above, but the task of publishing the applicatio
 
 Since they would have to transfer files to the server and log in anyway, it shouldn’t be too much of an additional burden to install a package while they’re there. Especially if that makes life easier from then on.
 
-The admin would need to transfer the package to the server, install it and then create a link — just like in the example above — from the expected location, to the installed location.
+The admin would need to transfer the package to the server, install it and then create a link -- just like in the example above -- from the expected location, to the installed location.
 
 The great thing with this approach is that when updates are due to be installed the admin only has to update the installed package and not any other files.
 
