@@ -5,13 +5,13 @@ The shinyAppDemo package has been created to demonstrate one method of packaging
 ## Installation
 
 ``` r
-devtools::install_github("sellorm/shinyAppDemo")
+devtools::install_github("mangothecat/shinyAppDemo")
 ```
 
 ...or...
 
 ``` r
-source("https://install-github.me/sellorm/shinyAppDemo")
+source("https://install-github.me/mangothecat/shinyAppDemo")
 ```
 
 ## Run the shiny app
