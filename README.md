@@ -38,7 +38,7 @@ Over time though I came to understand the power and flexibility that this model 
 
 # What is shiny?
 
-Hopefully if you’re reading this you already know, but shiny is a web application framework for R. It allows R users to develop powerful web applications entirely in R without having to understand HTML, CSS and JavaScript. It also allows us to embed the statistical power of R directly into those web applications.
+Hopefully if you’re reading this you already know, but [shiny is a web application framework for Ri](https://shiny.rstudio.com/). It allows R users to develop powerful web applications entirely in R without having to understand HTML, CSS and JavaScript. It also allows us to embed the statistical power of R directly into those web applications.
 
 Shiny apps generally consist of either a ui.R and a server.R (containing user interface and server-side logic respectively) or a single app.R which contains both.
 Why package a shiny app anyway?
@@ -117,13 +117,13 @@ Here’s where having a packaged shiny app can get tricky, so we’re going to t
 
 # Shiny Server and Shiny Server Pro
 
-Perhaps surprisingly -- given that Shiny Server is the oldest method of shiny app publication -- it’s also the easiest one to use with these sorts of packaged shiny apps. There are basically two ways to publish on shiny server. From your home directory on the server -- also known as self-publishing -- or publishing from a central location, usually the directory ‘/srv/shiny-server’.
+Perhaps surprisingly -- given that [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server/) is the oldest method of shiny app publication -- it’s also the easiest one to use with these sorts of packaged shiny apps. There are basically two ways to publish on shiny server. From your home directory on the server -- also known as self-publishing -- or publishing from a central location, usually the directory ‘/srv/shiny-server’.
 
 The central benefit of this approach is the ability to update the application just by installing a newer version of the package. Sadly though, it’s not always an easy approach to take.
 
 ## Apps served from home directory (AKA self-publishing)
 
-The first publication method is from a users' home directory. This is generally used in conjunction with RStudio Server. In the self-publishing model, Shiny Server (and Pro) expect apps to be found in a directory called ‘ShinyApps’, within the users home directory. This means that if we install a shiny app in a package the final location of the app directory will be inside the installed package, not in the ShinyApps directory. In order to work around this, we create a link from where the app is expected to be, to where it actually is within the installed package structure.
+The first publication method is [from a users' home directory](http://docs.rstudio.com/shiny-server/#host-per-user-application-directories). This is generally used in conjunction with RStudio Server. In the self-publishing model, Shiny Server (and Pro) expect apps to be found in a directory called ‘ShinyApps’, within the users home directory. This means that if we install a shiny app in a package the final location of the app directory will be inside the installed package, not in the ShinyApps directory. In order to work around this, we create a link from where the app is expected to be, to where it actually is within the installed package structure.
 
 So in the example of our package, we’d do something like this in a terminal session:
 
@@ -152,7 +152,7 @@ The great thing with this approach is that when updates are due to be installed 
 
 # RStudio Connect
 
-Connect is the next generation shiny server. In terms of features and performance, it’s far superior to its predecessor. One of the best features is the ability to push shiny app code directly from the RStudio IDE. For the vast majority of users, this is a huge productivity boost, since you no longer have to wait for an administrator to publish your app for you.
+[Connect](https://www.rstudio.com/products/connect/) is the next generation shiny server. In terms of features and performance, it’s far superior to its predecessor. One of the best features is the ability to push shiny app code directly from the RStudio IDE. For the vast majority of users, this is a huge productivity boost, since you no longer have to wait for an administrator to publish your app for you.
 
 Since publishing doesn’t require anyone to directly log into the server as part of the publishing process, there aren’t really any straightforward opportunities to install a custom package. This means that, in general, publishing a packaged shiny application isn’t really possible.
 
@@ -161,8 +161,9 @@ There’s only one real workaround for this situation that I’m aware of. If yo
 You’d need to have your dev environment and Connect hooked up to the same repo. The updated app package needs to be available in that repo and installed in your dev environment. Then, you could publish and then update the single line app.R for each successive package version you publish.
 
 Connect uses packrat under the hood, so when you publish the app.R the packrat manifest will also be sent to the server. Connect will use the manifest to decide which packages are required to run your app. If you’re using a custom package this would get picked up and installed or updated during deployment.
-shinyapps.io
-It’s not currently possible to publish a packaged application to shinyapps.io. You’d need to make sure your app followed the accepted conventions for creating shiny apps and only uses files, rather than any custom packages.
+
+# shinyapps.io
+It’s not currently possible to publish a packaged application to [shinyapps.io](http://www.shinyapps.io/). You’d need to make sure your app followed the accepted conventions for creating shiny apps and only uses files, rather than any custom packages.
 
 # Conclusion
 
