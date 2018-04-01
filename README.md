@@ -60,7 +60,7 @@ They’re also really easy to share. Even if you don’t publish your package to
 Before you get all excited and start to package your shiny applications, you should be aware that -- depending on your publishing environment -- packaging a shiny application may make it difficult or even impossible to publish to a system like Shiny Server or RStudio Connect, without first unpacking it again.
 
 
-# A little bit of mango history
+# A little bit of Mango history
 
 This is where Mango were in the early days of our shiny use. We had a significant disconnect between our data scientists writing the shiny apps and the IT team tasked with supporting the infrastructure they used. This was before we’d committed to having an engineering team that could sit in the middle and provide a bridge between the two.
 
