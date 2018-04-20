@@ -86,6 +86,27 @@ If you look through the code you’ll see that there are essentially three compo
 
 Building an R package of just those three components is a case of breaking them out into the constituent parts and inserting them into a blank package structure. We have a [version of this up on GitHub](https://github.com/mangothecat/shinyAppDemo) that you can check out if you want.
 
+The directory layout of the demo project looks like this:
+
+```
+|-- DESCRIPTION
+|-- LICENSE
+|-- NAMESPACE
+|-- R
+|   |-- launchApp.R
+|   |-- shinyAppServer.R
+|   `-- shinyAppUI.R
+|-- README.md
+|-- inst
+|   `-- shinyApp
+|       `-- app.R
+|-- man
+|   |-- launchApp.Rd
+|   |-- shinyAppServer.Rd
+|   `-- shinyAppUI.Rd
+`-- shinyAppDemo.Rproj
+```
+
 Once the app has been adapted to sit within the standard R package structure we’re almost done. The UI object and server function don’t really need to be exported, and we’ve just put a really thin wrapper function around `shinyApp()` -- I’ve called it `launchApp()` -- which we’ll actually use to launch the app. If you install the package from GitHub with devtools, you can see it in action.
 
 ```
@@ -94,6 +115,8 @@ launchApp()
 ```
 
 This will start the Shiny application running locally.
+
+The approach outlined here also works fine with [Shiny Modules](https://shiny.rstudio.com/articles/modules.html), either in the same package, or called from a separate package.
 
 And that’s almost it! The only thing remaining is how we might deploy this app to Shiny server (including Shiny Server Pro) or RStudio Connect.
 
